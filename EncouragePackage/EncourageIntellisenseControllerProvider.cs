@@ -10,12 +10,12 @@ using Microsoft.VisualStudio.Utilities;
 namespace Haack.Encourage
 {
     [Export(typeof(IIntellisenseControllerProvider))]
-    [Name("Encourage QuickInfo Controller")]
+    [Name("Encourage Intellisense Controller")]
     [ContentType("text")]
-    internal class EncourageQuickInfoControllerProvider : IIntellisenseControllerProvider
+    internal class EncourageIntellisenseControllerProvider : IIntellisenseControllerProvider
     {
         [Import]
-        internal IQuickInfoBroker QuickInfoBroker { get; set; }
+        internal ISignatureHelpBroker SignatureHelpBroker { get; set; }
 
         [Import]
         internal SVsServiceProvider ServiceProvider = null;
@@ -23,7 +23,7 @@ namespace Haack.Encourage
         public IIntellisenseController TryCreateIntellisenseController(ITextView textView, IList<ITextBuffer> subjectBuffers)
         {
             var dte = (DTE)ServiceProvider.GetService(typeof(DTE));
-            return new EncourageQuickInfoController(textView, dte, this);
+            return new EncourageIntellisenseController(textView, dte, this);
         }
     }
 }

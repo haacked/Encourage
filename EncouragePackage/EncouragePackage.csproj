@@ -19,6 +19,9 @@
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -134,10 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EncouragePackage.cs" />
-    <Compile Include="EncourageQuickInfoController.cs" />
-    <Compile Include="EncourageQuickInfoProvider.cs" />
-    <Compile Include="EncourageQuickInfoSource.cs" />
-    <Compile Include="EncourageQuickInfoSourceProvider.cs" />
+    <Compile Include="EncourageIntellisenseController.cs" />
+    <Compile Include="EncourageIntellisenseControllerProvider.cs" />
+    <Compile Include="EncourageSignatureHelpSource.cs" />
+    <Compile Include="EncourageSignatureHelpSourceProvider.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
