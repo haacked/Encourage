@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Collections.ObjectModel;
 
 namespace Haack.Encourage
 {
-    internal class EncourageQuickInfoSource : ISignatureHelpSource
+    internal class EncourageSignatureHelpSource : ISignatureHelpSource
     {
         sealed class Signature : ISignature
         {
@@ -62,7 +59,7 @@ namespace Haack.Encourage
 
         readonly ITextBuffer subjectBuffer;
 
-        public EncourageQuickInfoSource(ITextBuffer subjectBuffer)
+        public EncourageSignatureHelpSource(ITextBuffer subjectBuffer)
         {
             this.subjectBuffer = subjectBuffer;
         }

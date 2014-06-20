@@ -10,7 +10,7 @@ namespace Haack.Encourage
     [Name("ToolTip QuickInfo Source")]
     [Order(Before = "Default Quick Info Presenter")]
     [ContentType("text")]
-    internal class EncourageQuickInfoSourceProvider : ISignatureHelpSourceProvider
+    internal class EncourageSignatureHelpSourceProvider : ISignatureHelpSourceProvider
     {
         [Import]
         internal ITextStructureNavigatorSelectorService NavigatorService { get; set; }
@@ -20,7 +20,7 @@ namespace Haack.Encourage
 
         public ISignatureHelpSource TryCreateSignatureHelpSource(ITextBuffer textBuffer)
         {
-            return new EncourageQuickInfoSource(textBuffer);
+            return new EncourageSignatureHelpSource(textBuffer);
         }
     }
 }

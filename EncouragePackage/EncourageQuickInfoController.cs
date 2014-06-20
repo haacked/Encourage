@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using EnvDTE;
+﻿using EnvDTE;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
-using System.Windows.Threading;
 
 namespace Haack.Encourage
 {
-    internal class EncourageQuickInfoController : IIntellisenseController
+    internal class EncourageIntellisenseController : IIntellisenseController
     {
         ITextView textView;
-        readonly EncourageQuickInfoControllerProvider provider;
+        readonly EncourageIntellisenseControllerProvider provider;
         ISignatureHelpSession session;
         DocumentEvents documentEvents;
 
-        public EncourageQuickInfoController(
+        public EncourageIntellisenseController(
             ITextView textView,
             DTE dte,
-            EncourageQuickInfoControllerProvider provider)
+            EncourageIntellisenseControllerProvider provider)
         {
             this.textView = textView;
             this.provider = provider;

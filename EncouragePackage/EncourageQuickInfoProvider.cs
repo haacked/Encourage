@@ -12,7 +12,7 @@ namespace Haack.Encourage
     [Export(typeof(IIntellisenseControllerProvider))]
     [Name("Encourage QuickInfo Controller")]
     [ContentType("text")]
-    internal class EncourageQuickInfoControllerProvider : IIntellisenseControllerProvider
+    internal class EncourageIntellisenseControllerProvider : IIntellisenseControllerProvider
     {
         [Import]
         internal ISignatureHelpBroker SignatureHelpBroker { get; set; }
@@ -23,7 +23,7 @@ namespace Haack.Encourage
         public IIntellisenseController TryCreateIntellisenseController(ITextView textView, IList<ITextBuffer> subjectBuffers)
         {
             var dte = (DTE)ServiceProvider.GetService(typeof(DTE));
-            return new EncourageQuickInfoController(textView, dte, this);
+            return new EncourageIntellisenseController(textView, dte, this);
         }
     }
 }
