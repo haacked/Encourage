@@ -18,9 +18,12 @@ namespace Haack.Encourage
         [Import]
         internal ITextBufferFactoryService TextBufferFactoryService { get; set; }
 
+        [Import]
+        internal IEncouragements Encouragements { get; set; }
+
         public ISignatureHelpSource TryCreateSignatureHelpSource(ITextBuffer textBuffer)
         {
-            return new EncourageSignatureHelpSource(textBuffer);
+            return new EncourageSignatureHelpSource(textBuffer, Encouragements);
         }
     }
 }

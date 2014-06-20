@@ -136,12 +136,14 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Encouragements.cs" />
     <Compile Include="EncouragePackage.cs" />
     <Compile Include="EncourageIntellisenseController.cs" />
     <Compile Include="EncourageIntellisenseControllerProvider.cs" />
     <Compile Include="EncourageSignatureHelpSource.cs" />
     <Compile Include="EncourageSignatureHelpSourceProvider.cs" />
     <Compile Include="Guids.cs" />
+    <Compile Include="IEncouragements.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
