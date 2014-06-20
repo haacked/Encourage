@@ -6,11 +6,11 @@ using Microsoft.VisualStudio.Utilities;
 
 namespace Haack.Encourage
 {
-    [Export(typeof(IQuickInfoSourceProvider))]
+    [Export(typeof(ISignatureHelpSourceProvider))]
     [Name("ToolTip QuickInfo Source")]
     [Order(Before = "Default Quick Info Presenter")]
     [ContentType("text")]
-    internal class EncourageQuickInfoSourceProvider : IQuickInfoSourceProvider
+    internal class EncourageQuickInfoSourceProvider : ISignatureHelpSourceProvider
     {
         [Import]
         internal ITextStructureNavigatorSelectorService NavigatorService { get; set; }
@@ -18,7 +18,7 @@ namespace Haack.Encourage
         [Import]
         internal ITextBufferFactoryService TextBufferFactoryService { get; set; }
 
-        public IQuickInfoSource TryCreateQuickInfoSource(ITextBuffer textBuffer)
+        public ISignatureHelpSource TryCreateSignatureHelpSource(ITextBuffer textBuffer)
         {
             return new EncourageQuickInfoSource(textBuffer);
         }

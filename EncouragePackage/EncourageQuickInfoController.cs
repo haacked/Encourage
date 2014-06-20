@@ -4,6 +4,7 @@ using EnvDTE;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
+using System.Windows.Threading;
 
 namespace Haack.Encourage
 {
@@ -11,7 +12,8 @@ namespace Haack.Encourage
     {
         ITextView textView;
         readonly EncourageQuickInfoControllerProvider provider;
-        IQuickInfoSession session;
+        ISignatureHelpSession session;
+        DocumentEvents documentEvents;
 
         public EncourageQuickInfoController(
             ITextView textView,
@@ -20,16 +22,17 @@ namespace Haack.Encourage
         {
             this.textView = textView;
             this.provider = provider;
-            dte.Events.DocumentEvents.DocumentSaved += OnSaved;
+            this.documentEvents = dte.Events.DocumentEvents;
+            documentEvents.DocumentSaved += OnSaved;
         }
 
         void OnSaved(Document document)
         {
             var point = textView.Caret.Position.BufferPosition;
             var triggerPoint = point.Snapshot.CreateTrackingPoint(point.Position, PointTrackingMode.Positive);
-            if (!provider.QuickInfoBroker.IsQuickInfoActive(textView))
+            if (!provider.SignatureHelpBroker.IsSignatureHelpActive(textView))
             {
-                session = provider.QuickInfoBroker.TriggerQuickInfo(textView, triggerPoint, true);
+                session = provider.SignatureHelpBroker.TriggerSignatureHelp(textView, triggerPoint, true);
             }
         }
 

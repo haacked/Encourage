@@ -15,7 +15,7 @@ namespace Haack.Encourage
     internal class EncourageQuickInfoControllerProvider : IIntellisenseControllerProvider
     {
         [Import]
-        internal IQuickInfoBroker QuickInfoBroker { get; set; }
+        internal ISignatureHelpBroker SignatureHelpBroker { get; set; }
 
         [Import]
         internal SVsServiceProvider ServiceProvider = null;
