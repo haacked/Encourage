@@ -18,7 +18,7 @@ namespace Haack.Encourage
 
         public string GetRandomEncouragement()
         {
-            int randomIndex = random.Next(0, encouragements.Count - 1);
+            int randomIndex = random.Next(0, encouragements.Count);
             return encouragements[randomIndex];
         }
     }
