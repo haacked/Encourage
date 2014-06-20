@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.Utilities;
 namespace Haack.Encourage
 {
     [Export(typeof(IIntellisenseControllerProvider))]
-    [Name("Encourage QuickInfo Controller")]
+    [Name("Encourage Intellisense Controller")]
     [ContentType("text")]
     internal class EncourageIntellisenseControllerProvider : IIntellisenseControllerProvider
     {

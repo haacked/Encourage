@@ -7,8 +7,8 @@ using Microsoft.VisualStudio.Utilities;
 namespace Haack.Encourage
 {
     [Export(typeof(ISignatureHelpSourceProvider))]
-    [Name("ToolTip QuickInfo Source")]
-    [Order(Before = "Default Quick Info Presenter")]
+    [Name("ToolTip SignatureHelp Source")]
+    [Order(Before = "Default Signature Help Presenter")]
     [ContentType("text")]
     internal class EncourageSignatureHelpSourceProvider : ISignatureHelpSourceProvider
     {
