@@ -56,12 +56,13 @@ namespace Haack.Encourage
             }
         }
 
-
         readonly ITextBuffer subjectBuffer;
+        readonly IEncouragements encouragements;
 
-        public EncourageSignatureHelpSource(ITextBuffer subjectBuffer)
+        public EncourageSignatureHelpSource(ITextBuffer subjectBuffer, IEncouragements encouragements)
         {
             this.subjectBuffer = subjectBuffer;
+            this.encouragements = encouragements;
         }
 
         bool isDisposed;
@@ -74,7 +75,6 @@ namespace Haack.Encourage
                 isDisposed = true;
             }
         }
-
 
         public void AugmentSignatureHelpSession(ISignatureHelpSession session, IList<ISignature> signatures)
         {
@@ -92,7 +92,8 @@ namespace Haack.Encourage
                 1,
                 SpanTrackingMode.EdgeInclusive);
 
-            var signature = new Signature(applicableToSpan, "Good Job!!!", "", "");
+            string encouragement = encouragements.GetRandomEncouragement();
+            var signature = new Signature(applicableToSpan, encouragement, "", "");
             signatures.Add(signature);
         }
 
