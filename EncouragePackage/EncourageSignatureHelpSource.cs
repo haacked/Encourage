@@ -56,6 +56,13 @@ namespace Haack.Encourage
             }
         }
 
+        /// <summary>
+        /// This object needs to be added as a key to the property bag of an ITextView where
+        /// encouragement should be applied.  This prevents encouragement from being 
+        /// introduced in places like signature overload.
+        /// </summary>
+        internal static readonly object SessionKey = new object();
+
         readonly ITextBuffer subjectBuffer;
         readonly IEncouragements encouragements;
 
@@ -78,6 +85,11 @@ namespace Haack.Encourage
 
         public void AugmentSignatureHelpSession(ISignatureHelpSession session, IList<ISignature> signatures)
         {
+            if (!session.TextView.Properties.ContainsProperty(SessionKey))
+            {
+                return;
+            }
+
             // Map the trigger point down to our buffer.
             var subjectTriggerPoint = session.GetTriggerPoint(subjectBuffer.CurrentSnapshot);
             if (!subjectTriggerPoint.HasValue)

@@ -29,7 +29,9 @@ namespace Haack.Encourage
             var triggerPoint = point.Snapshot.CreateTrackingPoint(point.Position, PointTrackingMode.Positive);
             if (!provider.SignatureHelpBroker.IsSignatureHelpActive(textView))
             {
+                textView.Properties.AddProperty(EncourageSignatureHelpSource.SessionKey, null);
                 session = provider.SignatureHelpBroker.TriggerSignatureHelp(textView, triggerPoint, true);
+                textView.Properties.RemoveProperty(EncourageSignatureHelpSource.SessionKey);
             }
         }
 
