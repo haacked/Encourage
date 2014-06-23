@@ -16,6 +16,9 @@ local.properties
 .settings/
 .loadpath
 
+# Roslyn generated folders
+*.sln.ide/
+
 # External tool builders
 .externalToolBuilders/
 
