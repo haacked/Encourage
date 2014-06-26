@@ -104,6 +104,7 @@ namespace Haack.Encourage
                 1,
                 SpanTrackingMode.EdgeInclusive);
 
+            signatures.Clear();
             string encouragement = encouragements.GetRandomEncouragement();
             var signature = new Signature(applicableToSpan, encouragement, "", "");
             signatures.Add(signature);
