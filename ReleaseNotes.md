@@ -1,6 +1,7 @@
 ### New in 1.0.3 (Released 2014/06/30)
 * Support for Visual Studio 2012 - #10 via @jaredpar
 * Fixed crash when caret is at the very end of the document - #11 via @jaredpar
+* Added a couple more encouragements
 
 ### New in 1.0.1 (Released 2014/06/23)
 * Fixed encouragements showing up in Intellisense signature help - #7 via @jaredpar
