@@ -101,7 +101,7 @@ namespace Haack.Encourage
             var querySpan = new SnapshotSpan(subjectTriggerPoint.Value, 0);
             var applicableToSpan = currentSnapshot.CreateTrackingSpan(
                 querySpan.Start.Position,
-                1,
+                0,
                 SpanTrackingMode.EdgeInclusive);
 
             string encouragement = encouragements.GetRandomEncouragement();
