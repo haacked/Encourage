@@ -1,4 +1,5 @@
-﻿using EnvDTE;
+﻿using System;
+using EnvDTE;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -7,23 +8,32 @@ namespace Haack.Encourage
 {
     internal class EncourageIntellisenseController : IIntellisenseController
     {
-        ITextView textView;
+        readonly ITextView textView;
+        readonly ITextDocument textDocument;
         readonly EncourageIntellisenseControllerProvider provider;
         ISignatureHelpSession session;
-        DocumentEvents documentEvents;
 
         public EncourageIntellisenseController(
             ITextView textView,
-            DTE dte,
+            ITextDocument textDocument,
             EncourageIntellisenseControllerProvider provider)
         {
             this.textView = textView;
+            this.textDocument = textDocument;
             this.provider = provider;
-            this.documentEvents = dte.Events.DocumentEvents;
-            documentEvents.DocumentSaved += OnSaved;
+
+            textDocument.DirtyStateChanged += OnDocumentDirtyStateChanged;
         }
 
-        void OnSaved(Document document)
+        void OnDocumentDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (!this.textDocument.IsDirty)
+            {
+                DisplayEncouragement();
+            }
+        }
+
+        void DisplayEncouragement()
         {
             var point = textView.Caret.Position.BufferPosition;
             var triggerPoint = point.Snapshot.CreateTrackingPoint(point.Position, PointTrackingMode.Positive);
@@ -39,16 +49,18 @@ namespace Haack.Encourage
         {
             if (textView == detacedTextView)
             {
-                textView = null;
+                textDocument.DirtyStateChanged -= OnDocumentDirtyStateChanged;
             }
         }
 
         public void ConnectSubjectBuffer(ITextBuffer subjectBuffer)
         {
+
         }
 
         public void DisconnectSubjectBuffer(ITextBuffer subjectBuffer)
         {
+
         }
     }
 }

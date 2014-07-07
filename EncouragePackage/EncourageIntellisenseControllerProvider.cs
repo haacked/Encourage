@@ -18,12 +18,17 @@ namespace Haack.Encourage
         internal ISignatureHelpBroker SignatureHelpBroker { get; set; }
 
         [Import]
-        internal SVsServiceProvider ServiceProvider = null;
+        internal ITextDocumentFactoryService TextDocumentFactoryService = null;
 
         public IIntellisenseController TryCreateIntellisenseController(ITextView textView, IList<ITextBuffer> subjectBuffers)
         {
-            var dte = (DTE)ServiceProvider.GetService(typeof(DTE));
-            return new EncourageIntellisenseController(textView, dte, this);
+            ITextDocument textDocument;
+            if (!TextDocumentFactoryService.TryGetTextDocument(textView.TextBuffer, out textDocument))
+            {
+                return null;
+            }
+
+            return new EncourageIntellisenseController(textView, textDocument, this);
         }
     }
 }
