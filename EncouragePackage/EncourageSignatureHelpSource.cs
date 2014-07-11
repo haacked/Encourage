@@ -90,6 +90,13 @@ namespace Haack.Encourage
                 return;
             }
 
+            // At the moment there is a bug in the javascript provider which causes it to 
+            // repeatedly insert the same Signature values into an ISignatureHelpSession
+            // instance.  There is no way, other than reflection, for us to prevent this
+            // from happening.  Instead we just ensure that our provider runs after 
+            // Javascript and then remove the values they add here 
+            signatures.Clear();
+
             // Map the trigger point down to our buffer.
             var subjectTriggerPoint = session.GetTriggerPoint(subjectBuffer.CurrentSnapshot);
             if (!subjectTriggerPoint.HasValue)

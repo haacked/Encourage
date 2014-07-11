@@ -9,6 +9,7 @@ namespace Haack.Encourage
     [Export(typeof(ISignatureHelpSourceProvider))]
     [Name("ToolTip SignatureHelp Source")]
     [Order(Before = "Default Signature Help Presenter")]
+    [Order(After = "JavaScript Signature Help source")]
     [ContentType("text")]
     internal class EncourageSignatureHelpSourceProvider : ISignatureHelpSourceProvider
     {
