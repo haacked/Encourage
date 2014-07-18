@@ -28,6 +28,18 @@ namespace Haack.Encourage
                 return null;
             }
 
+            // In general having an ITextDocument is sufficient to determine if a given ITextView is 
+            // back by an actual document.  There are some windows though, like the Immediate Window, 
+            // which aren't documents that do still have a backing temporary file.  These files are
+            // uninteresting to Encourage because they are temporary files that exist as an
+            // implementation detail
+            //
+            // The easiest way to filter for real documents is to check for the Document role 
+            if (!textView.Roles.Contains(PredefinedTextViewRoles.Document))
+            {
+                return null;
+            }
+
             return new EncourageIntellisenseController(textView, textDocument, this);
         }
     }
