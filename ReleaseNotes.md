@@ -1,3 +1,6 @@
+### New in 1.0.5 (Released 2014/07/18)
+* Fixed bug where encouragements show up in the Immediate window - #20 via @jaredpar
+
 ### New in 1.0.4 (Released 2014/07/11)
 * Fixed bug with encouragements scrambled in JavaScript editor - #17 via @jaredpar
 
