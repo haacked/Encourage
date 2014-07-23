@@ -15,7 +15,15 @@ namespace Haack.Encourage
             "Wow, nice change!",
             "So good!",
             "Bravo!",
-            "You rock!"
+            "You rock!",
+            "Well done!",
+            "I see what you did there!",
+            "Genius work!",
+            "Thumbs up!",
+            "Coding win!",
+            "FTW!",
+            "Yep!",
+            "Nnnnailed it!"
         }; 
 
         public string GetRandomEncouragement()
