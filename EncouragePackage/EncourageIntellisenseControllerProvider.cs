@@ -23,7 +23,7 @@ namespace Haack.Encourage
         public IIntellisenseController TryCreateIntellisenseController(ITextView textView, IList<ITextBuffer> subjectBuffers)
         {
             ITextDocument textDocument;
-            if (!TextDocumentFactoryService.TryGetTextDocument(textView.TextBuffer, out textDocument))
+            if (!TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out textDocument))
             {
                 return null;
             }
