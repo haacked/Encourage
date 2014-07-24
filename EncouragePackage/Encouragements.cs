@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Linq;
+using Haack.Encourage.Properties;
 
 namespace Haack.Encourage
 {
@@ -8,28 +10,19 @@ namespace Haack.Encourage
     public class Encouragements : IEncouragements
     {
         static readonly Random random = new Random();
-        readonly List<string> encouragements = new List<string>
-        {
-            "Nice Job!",
-            "Way to go!",
-            "Wow, nice change!",
-            "So good!",
-            "Bravo!",
-            "You rock!",
-            "Well done!",
-            "I see what you did there!",
-            "Genius work!",
-            "Thumbs up!",
-            "Coding win!",
-            "FTW!",
-            "Yep!",
-            "Nnnnailed it!"
-        }; 
+        readonly List<string> encouragements = GetSettingsFromSettings();
 
         public string GetRandomEncouragement()
         {
             int randomIndex = random.Next(0, encouragements.Count);
             return encouragements[randomIndex];
+        }
+
+        static List<string> GetSettingsFromSettings()
+        {
+            return Settings.Default.Encouragements.Split(
+                    new [] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
         }
     }
 }

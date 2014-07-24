@@ -1,6 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Haack.Encourage.Options;
 using Microsoft.VisualStudio.Shell;
 
 namespace Haack.Encourage
@@ -22,6 +22,7 @@ namespace Haack.Encourage
     // in the Help/About dialog of Visual Studio.
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [Guid(GuidList.guidEncouragePackagePkgString)]
+    [ProvideOptionPageAttribute(typeof(OptionsDialogPage), "Encourage", "Encouragement List", 0, 0, supportsAutomation: true)]
     public sealed class EncouragePackage : Package
     {
         /// <summary>
