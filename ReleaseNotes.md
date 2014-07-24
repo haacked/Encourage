@@ -1,3 +1,7 @@
+### New in 1.0.6 (Released 2014/07/24)
+* Added eight new encouragements - #23 via @philoushka
+* Fixed bug so encouragements now show up in Razor files - #25 via @jaredpar
+
 ### New in 1.0.5 (Released 2014/07/18)
 * Fixed bug where encouragements show up in the Immediate window - #20 via @jaredpar
 
