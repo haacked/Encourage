@@ -1,9 +1,9 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Forms;
-using Haack.Encourage.Properties;
 using Microsoft.VisualStudio.Shell;
 using MessageBox = System.Windows.Forms.MessageBox;
 
@@ -13,23 +13,40 @@ namespace Haack.Encourage.Options
     [CLSCompliant(false)]
     [ComVisible(true)]
     [Guid("1D9ECCF3-5D2F-4112-9B25-264596873DC9")]
-    public class OptionsDialogPage : UIElementDialogPage
+    [Export(typeof(IEncouragements))]
+    public class OptionsDialogPage : UIElementDialogPage, IEncouragements
     {
-        OptionsDialogPageControl optionsDialogControl;
+        static readonly Random random = new Random();
 
-        public OptionsDialogPage()
-        {
-        }
+        OptionsDialogPageControl optionsDialogControl;
+        const string defaultEncouragements = @"Nice Job!
+Way to go!
+Wow, nice change!
+So good!
+Bravo!
+You rock!
+Well done!
+I see what you did there!
+Genius work!
+Thumbs up!
+Coding win!
+FTW!
+Yep!
+Nnnnailed it!";
+
+        // TODO: Could we make this a notify property so when it changes, we update the encouragements list
+        //       rather than splitting on it every time?
+        public string Encouragements { get; set; }
 
         protected override UIElement Child
         {
             get
             {
-                if (optionsDialogControl == null)
-                {
-                    optionsDialogControl = new OptionsDialogPageControl();
-                }
-                return optionsDialogControl;
+                return optionsDialogControl
+                       ?? (optionsDialogControl = new OptionsDialogPageControl
+                       {
+                           Encouragements = Encouragements ?? defaultEncouragements
+                       });
             }
         }
 
@@ -39,8 +56,7 @@ namespace Haack.Encourage.Options
             {
                 try
                 {
-                    Settings.Default.Encouragements = optionsDialogControl.Encouragements;
-                    Settings.Default.Save();
+                    Encouragements = optionsDialogControl.Encouragements;
                 }
                 catch (Exception e)
                 {
@@ -48,6 +64,22 @@ namespace Haack.Encourage.Options
                 }
             }
             base.OnApply(args);
+        }
+
+        IList<string> EncouragementsList
+        {
+            get
+            {
+                return (Encouragements ?? defaultEncouragements).Split(
+                    new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToList();
+            }
+        }
+
+        public string GetRandomEncouragement()
+        {
+            int randomIndex = random.Next(0, EncouragementsList.Count);
+            return EncouragementsList[randomIndex];
         }
     }
 }

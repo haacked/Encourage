@@ -130,7 +130,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encouragements.cs" />
     <Compile Include="EncouragePackage.cs" />
     <Compile Include="EncourageIntellisenseController.cs" />
     <Compile Include="EncourageIntellisenseControllerProvider.cs" />
@@ -143,11 +142,6 @@
     </Compile>
     <Compile Include="Options\OptionsDialogPageControl.xaml.cs">
       <DependentUpon>OptionsDialogPageControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -169,11 +163,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
