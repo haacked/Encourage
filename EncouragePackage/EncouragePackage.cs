@@ -25,5 +25,12 @@ namespace Haack.Encourage
     [ProvideOptionPage(typeof(OptionsDialogPage), "Encourage", "Encouragement List", 0, 0, supportsAutomation: true)]
     public sealed class EncouragePackage : Package
     {
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            var dialog = (OptionsDialogPage)GetDialogPage(typeof(OptionsDialogPage)); // Make sure this is activated
+            Debug.WriteLine(dialog.Encouragements);
+        }
     }
 }

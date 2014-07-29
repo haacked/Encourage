@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -42,12 +43,15 @@ Nnnnailed it!";
         {
             get
             {
-                return optionsDialogControl
-                       ?? (optionsDialogControl = new OptionsDialogPageControl
-                       {
-                           Encouragements = Encouragements ?? defaultEncouragements
-                       });
+                return optionsDialogControl ?? (optionsDialogControl = new OptionsDialogPageControl());
             }
+        }
+
+        protected override void OnActivate(CancelEventArgs e)
+        {
+            base.OnActivate(e);
+
+            optionsDialogControl.Encouragements = Encouragements ?? defaultEncouragements;
         }
 
         protected override void OnApply(PageApplyEventArgs args)
