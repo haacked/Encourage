@@ -1,19 +1,17 @@
-﻿using System.ComponentModel.Composition;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Haack.Encourage.Options;
 using Microsoft.VisualStudio.Shell;
 
 namespace Haack.Encourage
 {
     /// <summary>
-    ///     This is the class that implements the package exposed by this assembly.
-    ///     The minimum requirement for a class to be considered a valid package for Visual Studio
-    ///     is to implement the IVsPackage interface and register itself with the shell.
-    ///     This package uses the helper classes defined inside the Managed Package Framework (MPF)
-    ///     to do it: it derives from the Package class that provides the implementation of the
-    ///     IVsPackage interface and uses the registration attributes defined in the framework to
-    ///     register itself and its components with the shell.
+    /// This is the class that implements the package exposed by this assembly.
+    /// The minimum requirement for a class to be considered a valid package for Visual Studio
+    /// is to implement the IVsPackage interface and register itself with the shell.
+    /// This package uses the helper classes defined inside the Managed Package Framework (MPF)
+    /// to do it: it derives from the Package class that provides the implementation of the
+    /// IVsPackage interface and uses the registration attributes defined in the framework to
+    /// register itself and its components with the shell.
     /// </summary>
     // This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is
     // a package.
@@ -25,6 +23,5 @@ namespace Haack.Encourage
     [ProvideOptionPage(typeof(OptionsDialogPage), "Encourage", "Encouragement List", 0, 0, supportsAutomation: true)]
     public sealed class EncouragePackage : Package
     {
-
     }
 }

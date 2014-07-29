@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.Composition;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
-using Microsoft.VisualStudio.Shell;
-using MessageBox = System.Windows.Forms.MessageBox;
 using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.Shell;
 
 namespace Haack.Encourage.Options
 {
@@ -21,10 +17,7 @@ namespace Haack.Encourage.Options
 
         protected override UIElement Child
         {
-            get
-            {
-                return optionsDialogControl ?? (optionsDialogControl = new OptionsDialogPageControl());
-            }
+            get { return optionsDialogControl ?? (optionsDialogControl = new OptionsDialogPageControl()); }
         }
 
         protected override void OnActivate(CancelEventArgs e)
@@ -39,14 +32,14 @@ namespace Haack.Encourage.Options
         {
             if (args.ApplyBehavior == ApplyKind.Apply)
             {
-                var userEncouragments = optionsDialogControl.Encouragements.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                string[] userEncouragments = optionsDialogControl.Encouragements.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                 GetEncouragements().AllEncouragements = userEncouragments;
             }
 
             base.OnApply(args);
         }
 
-        private IEncouragements GetEncouragements()
+        IEncouragements GetEncouragements()
         {
             var componentModel = (IComponentModel)(Site.GetService(typeof(SComponentModel)));
             return componentModel.DefaultExportProvider.GetExportedValue<IEncouragements>();

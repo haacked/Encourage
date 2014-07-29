@@ -1,5 +1,4 @@
 ﻿using System;
-using EnvDTE;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -27,7 +26,7 @@ namespace Haack.Encourage
 
         void OnDocumentDirtyStateChanged(object sender, EventArgs e)
         {
-            if (!this.textDocument.IsDirty)
+            if (!textDocument.IsDirty)
             {
                 DisplayEncouragement();
             }
@@ -55,12 +54,10 @@ namespace Haack.Encourage
 
         public void ConnectSubjectBuffer(ITextBuffer subjectBuffer)
         {
-
         }
 
         public void DisconnectSubjectBuffer(ITextBuffer subjectBuffer)
         {
-
         }
     }
 }
