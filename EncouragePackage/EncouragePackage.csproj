@@ -58,6 +58,7 @@
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -135,6 +136,7 @@
     <Compile Include="EncourageIntellisenseControllerProvider.cs" />
     <Compile Include="EncourageSignatureHelpSource.cs" />
     <Compile Include="EncourageSignatureHelpSourceProvider.cs" />
+    <Compile Include="Encouragments.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="IEncouragements.cs" />
     <Compile Include="Options\OptionsDialogPage.cs">
