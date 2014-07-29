@@ -112,8 +112,11 @@ namespace Haack.Encourage
                 SpanTrackingMode.EdgeInclusive);
 
             string encouragement = encouragements.GetRandomEncouragement();
-            var signature = new Signature(applicableToSpan, encouragement, "", "");
-            signatures.Add(signature);
+            if (encouragement != null)
+            {
+                var signature = new Signature(applicableToSpan, encouragement, "", "");
+                signatures.Add(signature);
+            }
         }
 
         public ISignature GetBestMatch(ISignatureHelpSession session)

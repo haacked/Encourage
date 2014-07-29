@@ -78,6 +78,8 @@ Nnnnailed it!";
 
         public string GetRandomEncouragement()
         {
+            if (!EncouragementsList.Any()) return null;
+
             int randomIndex = random.Next(0, EncouragementsList.Count);
             return EncouragementsList[randomIndex];
         }
