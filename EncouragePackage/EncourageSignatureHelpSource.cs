@@ -17,12 +17,12 @@ namespace Haack.Encourage
 
             public ITrackingSpan ApplicableToSpan
             {
-                get { return this.trackingSpan; }
+                get { return trackingSpan; }
             }
 
             public string Content
             {
-                get { return this.content; }
+                get { return content; }
             }
 
             public IParameter CurrentParameter
@@ -34,17 +34,17 @@ namespace Haack.Encourage
 
             public string Documentation
             {
-                get { return this.documentation; }
+                get { return documentation; }
             }
 
             public ReadOnlyCollection<IParameter> Parameters
             {
-                get { return new ReadOnlyCollection<IParameter>(new IParameter[] { });  }
+                get { return new ReadOnlyCollection<IParameter>(new IParameter[] { }); }
             }
 
             public string PrettyPrintedContent
             {
-                get { return this.prettyPrintedContent; }
+                get { return prettyPrintedContent; }
             }
 
             internal Signature(ITrackingSpan trackingSpan, string content, string prettyPrintedContent, string documentation)
@@ -57,9 +57,9 @@ namespace Haack.Encourage
         }
 
         /// <summary>
-        /// This object needs to be added as a key to the property bag of an ITextView where
-        /// encouragement should be applied.  This prevents encouragement from being 
-        /// introduced in places like signature overload.
+        ///     This object needs to be added as a key to the property bag of an ITextView where
+        ///     encouragement should be applied.  This prevents encouragement from being
+        ///     introduced in places like signature overload.
         /// </summary>
         internal static readonly object SessionKey = new object();
 
@@ -112,8 +112,11 @@ namespace Haack.Encourage
                 SpanTrackingMode.EdgeInclusive);
 
             string encouragement = encouragements.GetRandomEncouragement();
-            var signature = new Signature(applicableToSpan, encouragement, "", "");
-            signatures.Add(signature);
+            if (encouragement != null)
+            {
+                var signature = new Signature(applicableToSpan, encouragement, "", "");
+                signatures.Add(signature);
+            }
         }
 
         public ISignature GetBestMatch(ISignatureHelpSession session)
