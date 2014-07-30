@@ -24,8 +24,8 @@ namespace Haack.Encourage.Options
         {
             base.OnActivate(e);
 
-            var encouraments = GetEncouragements();
-            optionsDialogControl.Encouragements = string.Join(Environment.NewLine, encouraments.AllEncouragements);
+            var encouragements = GetEncouragements();
+            optionsDialogControl.Encouragements = string.Join(Environment.NewLine, encouragements.AllEncouragements);
         }
 
         protected override void OnApply(PageApplyEventArgs args)
