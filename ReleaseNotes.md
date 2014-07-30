@@ -1,3 +1,6 @@
+### New in 1.1.0 (Released 2014/07/29)
+* Added option to configure the set of encouragements - #27 via @haacked
+
 ### New in 1.0.6 (Released 2014/07/24)
 * Added eight new encouragements - #23 via @philoushka
 * Fixed bug so encouragements now show up in Razor files - #25 via @jaredpar
