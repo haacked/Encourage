@@ -14,7 +14,7 @@
         <TextBlock
             Grid.Row="0"
             Padding="5"
-            Text="Enter each encourament on its own line" />
+            Text="Enter each encouragement on its own line" />
         <TextBox
             x:Name="encouragements"
             Grid.Row="1"
