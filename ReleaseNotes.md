@@ -1,3 +1,6 @@
+### New in 1.1.1 (Released 2015/05/08)
+* Support for Visual Studio 2015 RC - #26 via @rprouse
+
 ### New in 1.1.0 (Released 2014/07/29)
 * Added option to configure the set of encouragements - #27 via @haacked
 
