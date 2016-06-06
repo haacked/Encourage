@@ -1,3 +1,6 @@
+### New in 1.1.2 (Released 2016/06/06)
+* Support for Visual Studio "15" Preview - #39 via @sklivvz
+
 ### New in 1.1.1 (Released 2015/05/08)
 * Support for Visual Studio 2015 RC - #26 via @rprouse
 
