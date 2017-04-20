@@ -5,6 +5,7 @@
     <DisplayName>Encourage</DisplayName>
     <Description>Adds a bit of whimsy to your work day.</Description>
     <License>LICENSE.txt</License>
+    <Icon>Resources\encourage-icon.png</Icon>
   </Metadata>
   <Installation InstalledByMsi="false">
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[11.0, 15.0]" />
