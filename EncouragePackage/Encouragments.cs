@@ -11,11 +11,28 @@ namespace Haack.Encourage
     [Export(typeof(IEncouragements))]
     public class Encouragements : IEncouragements
     {
-        const string CollectionPath = "Encouragements";
-        const string PropertyName = "AllEncouragements";
+        private const string CollectionPath = "Encourage";
+        private const string DiscouragementsPropertyName = "AllDiscouragements";
+        private const string EncouragementsPropertyName = "AllEncouragements";
 
-        static readonly Random random = new Random();
-        static readonly string[] defaultEncouragements = new[]
+        private static readonly string[] defaultDiscouragements = new[] {
+            // Thanks Phill
+            "😱 Seriously?",
+            "😷 That's a bad look.",
+            "Burn it to the ground! 🔥",
+            "😠 Torvalds frowns at you.",
+            "🚶 Have you considered another career?",
+            "You must hate your coworkers. 👹",
+            "😡 You must hate yourself.",
+            "Ha! Yeah, that'll work. 😄",
+            "Are you just hitting keys at random?",
+            "You code like a PM. 😐",
+            "🍸Are you drinking?",
+            "Who cares about uptime anyways, amirite?! 😏",
+            "✨ YOLO! ✨"
+        };
+
+        private static readonly string[] defaultEncouragements = new[]
         {
             "Nice Job!",
             "Way to go!",
@@ -33,8 +50,39 @@ namespace Haack.Encourage
             "Nnnnailed it!"
         };
 
-        readonly List<string> encouragements = new List<string>(defaultEncouragements);
-        readonly WritableSettingsStore writableSettingsStore;
+        private static readonly Random random = new Random();
+        private readonly List<string> discouragements = new List<string>(defaultDiscouragements);
+        private readonly List<string> encouragements = new List<string>(defaultEncouragements);
+        private readonly WritableSettingsStore writableSettingsStore;
+        private SVsServiceProvider _ServiceProvider;
+
+        [ImportingConstructor]
+        public Encouragements(SVsServiceProvider vsServiceProvider)
+        {
+            _ServiceProvider = vsServiceProvider;
+
+            var shellSettingsManager = new ShellSettingsManager(vsServiceProvider);
+            writableSettingsStore = shellSettingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
+
+            LoadSettings();
+        }
+
+        public IEnumerable<string> AllDiscouragements
+        {
+            get { return discouragements; }
+            set
+            {
+                discouragements.Clear();
+                discouragements.AddRange(value);
+
+                if (discouragements.Count == 0)
+                {
+                    discouragements.AddRange(defaultDiscouragements);
+                }
+
+                SaveSettings();
+            }
+        }
 
         public IEnumerable<string> AllEncouragements
         {
@@ -51,13 +99,11 @@ namespace Haack.Encourage
             }
         }
 
-        [ImportingConstructor]
-        public Encouragements(SVsServiceProvider vsServiceProvider)
+        public string GetRandomDiscouragement()
         {
-            var shellSettingsManager = new ShellSettingsManager(vsServiceProvider);
-            writableSettingsStore = shellSettingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
+            int randomIndex = random.Next(0, discouragements.Count);
 
-            LoadSettings();
+            return discouragements[randomIndex];
         }
 
         public string GetRandomEncouragement()
@@ -66,14 +112,25 @@ namespace Haack.Encourage
             return encouragements[randomIndex];
         }
 
-        void LoadSettings()
+        public SVsServiceProvider GetServiceProvider()
+        {
+            return this._ServiceProvider;
+        }
+
+        private void LoadSettings()
         {
             try
             {
-                if (writableSettingsStore.PropertyExists(CollectionPath, PropertyName))
+                if (writableSettingsStore.PropertyExists(CollectionPath, EncouragementsPropertyName))
                 {
-                    string value = writableSettingsStore.GetString(CollectionPath, PropertyName);
+                    string value = writableSettingsStore.GetString(CollectionPath, EncouragementsPropertyName);
                     AllEncouragements = value.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                }
+
+                if (writableSettingsStore.PropertyExists(CollectionPath, DiscouragementsPropertyName))
+                {
+                    string value = writableSettingsStore.GetString(CollectionPath, DiscouragementsPropertyName);
+                    AllDiscouragements = value.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                 }
             }
             catch (Exception ex)
@@ -82,7 +139,7 @@ namespace Haack.Encourage
             }
         }
 
-        void SaveSettings()
+        private void SaveSettings()
         {
             try
             {
@@ -91,8 +148,8 @@ namespace Haack.Encourage
                     writableSettingsStore.CreateCollection(CollectionPath);
                 }
 
-                string value = string.Join(Environment.NewLine, encouragements);
-                writableSettingsStore.SetString(CollectionPath, PropertyName, value);
+                writableSettingsStore.SetString(CollectionPath, EncouragementsPropertyName, string.Join(Environment.NewLine, encouragements));
+                writableSettingsStore.SetString(CollectionPath, DiscouragementsPropertyName, string.Join(Environment.NewLine, discouragements));
             }
             catch (Exception ex)
             {

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Microsoft.VisualStudio.Shell;
 
 namespace Haack.Encourage.Options
 {
@@ -16,21 +15,28 @@ namespace Haack.Encourage.Options
             InitializeComponent();
 
             encouragements.AddHandler(UIElementDialogPage.DialogKeyPendingEvent, new RoutedEventHandler(OnDialogKeyPendingEvent));
+            discouragements.AddHandler(UIElementDialogPage.DialogKeyPendingEvent, new RoutedEventHandler(OnDialogKeyPendingEvent));
         }
 
-        void OnDialogKeyPendingEvent(object sender, RoutedEventArgs e)
+        public string Discouragements
         {
-            var args = e as DialogKeyEventArgs;
-            if (args != null && args.Key == Key.Enter)
-            {
-                e.Handled = true;
-            }
+            get { return discouragements.Text; }
+            set { discouragements.Text = value; }
         }
 
         public string Encouragements
         {
             get { return encouragements.Text; }
             set { encouragements.Text = value; }
+        }
+
+        private void OnDialogKeyPendingEvent(object sender, RoutedEventArgs e)
+        {
+            var args = e as DialogKeyEventArgs;
+            if (args != null && args.Key == Key.Enter)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
