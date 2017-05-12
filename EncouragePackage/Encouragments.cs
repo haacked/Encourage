@@ -30,7 +30,30 @@ namespace Haack.Encourage
             "Coding win!",
             "FTW!",
             "Yep!",
-            "Nnnnailed it!"
+            "Nnnnailed it!",
+            "much actions!",
+            "wow!",
+            "many algorithm!",
+            "such array!",
+            "so program!",
+            "amaze!",
+            "many bracket!",
+            "such save!",
+            "very code!",
+            "very compile!",
+            "amaze!",
+            "much loops!",
+            "very function!",
+            "amaze condition!",
+            "so logic!",
+            "very class!",
+            "such name!",
+            "excite!",
+            "many operand!",
+            "so recurse!",
+            "much syntax!",
+            "very system!",
+            "much smarts!"
         };
 
         readonly List<string> encouragements = new List<string>(defaultEncouragements);
