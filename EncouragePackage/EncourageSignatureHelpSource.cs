@@ -111,6 +111,7 @@ namespace Haack.Encourage
                 0,
                 SpanTrackingMode.EdgeInclusive);
 
+            signatures.Clear();
             string encouragement = encouragements.GetRandomEncouragement();
             if (encouragement != null)
             {
