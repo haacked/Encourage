@@ -1,3 +1,6 @@
+### New in 1.2.2 (Released 2019/04/08)
+* Support for Visual Studio 2019 - #50 via @dennisroche
+
 ### New in 1.1.2 (Released 2016/06/06)
 * Support for Visual Studio "15" Preview - #39 via @sklivvz
 
