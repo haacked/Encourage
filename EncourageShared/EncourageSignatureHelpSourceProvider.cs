@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Operations;
 using Microsoft.VisualStudio.Utilities;
 
-namespace Haack.Encourage
+namespace Haack.Encourage.Shared
 {
     [Export(typeof(ISignatureHelpSourceProvider))]
     [Name("ToolTip SignatureHelp Source")]

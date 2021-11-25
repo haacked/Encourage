@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 
-namespace Haack.Encourage
+namespace Haack.Encourage.Shared
 {
     internal class EncourageSignatureHelpSource : ISignatureHelpSource
     {

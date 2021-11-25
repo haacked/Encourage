@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 
-namespace Haack.Encourage
+namespace Haack.Encourage.Shared
 {
     [Export(typeof(IIntellisenseControllerProvider))]
     [Name("Encourage Intellisense Controller")]

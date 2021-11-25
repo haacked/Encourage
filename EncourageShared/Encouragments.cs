@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 
-namespace Haack.Encourage
+namespace Haack.Encourage.Shared
 {
     [Export(typeof(IEncouragements))]
     public class Encouragements : IEncouragements

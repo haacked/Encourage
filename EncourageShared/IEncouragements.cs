@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-namespace Haack.Encourage
+
+namespace Haack.Encourage.Shared
 {
     public interface IEncouragements
     {

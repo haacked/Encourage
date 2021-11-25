@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 
-namespace Haack.Encourage
+namespace Haack.Encourage.Shared
 {
     internal class EncourageIntellisenseController : IIntellisenseController
     {
