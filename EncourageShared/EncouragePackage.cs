@@ -1,6 +1,14 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Threading;
 using Haack.Encourage.Shared.Options;
 using Microsoft.VisualStudio.Shell;
+
+#if X86
+using Haack.Encourage.x86;
+#elif X64
+using Haack.Encourage.x64;
+#endif
 
 namespace Haack.Encourage.Shared
 {

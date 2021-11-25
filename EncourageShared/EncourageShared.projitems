@@ -17,7 +17,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)EncourageSignatureHelpSourceProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Encouragments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Guids.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IEncouragements.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsDialogPage.cs">
       <SubType>Component</SubType>
