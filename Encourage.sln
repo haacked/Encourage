@@ -1,29 +1,53 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncouragePackage", "EncouragePackage\EncouragePackage.csproj", "{4A77FC23-A472-47C8-93B5-F59691F53201}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Meta", "Meta", "{A84D9A09-F54D-4723-BECD-42E9AD5807EA}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE.txt = LICENSE.txt
-		README.md = README.md
 		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EncourageShared", "EncourageShared\EncourageShared.shproj", "{C653D34B-75E4-44BD-9B6D-B6B58270550E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncouragePackage.x64", "EncouragePackage.x64\EncouragePackage.x64.csproj", "{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncouragePackage.x86", "EncouragePackage.x86\EncouragePackage.x86.csproj", "{4A77FC23-A472-47C8-93B5-F59691F53201}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		EncourageShared\EncourageShared.projitems*{4a77fc23-a472-47c8-93b5-f59691f53201}*SharedItemsImports = 4
+		EncourageShared\EncourageShared.projitems*{bca19595-fbf7-4a34-a6eb-8f939b88f8a5}*SharedItemsImports = 4
+		EncourageShared\EncourageShared.projitems*{c653d34b-75e4-44bd-9b6d-b6b58270550e}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Debug|x86.ActiveCfg = Debug|x86
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Debug|x86.Build.0 = Debug|x86
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Release|x86.ActiveCfg = Release|x86
+		{BCA19595-FBF7-4A34-A6EB-8F939B88F8A5}.Release|x86.Build.0 = Release|x86
 		{4A77FC23-A472-47C8-93B5-F59691F53201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A77FC23-A472-47C8-93B5-F59691F53201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A77FC23-A472-47C8-93B5-F59691F53201}.Debug|x86.ActiveCfg = Debug|x86
+		{4A77FC23-A472-47C8-93B5-F59691F53201}.Debug|x86.Build.0 = Debug|x86
 		{4A77FC23-A472-47C8-93B5-F59691F53201}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A77FC23-A472-47C8-93B5-F59691F53201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A77FC23-A472-47C8-93B5-F59691F53201}.Release|x86.ActiveCfg = Release|x86
+		{4A77FC23-A472-47C8-93B5-F59691F53201}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09DCCB3B-6FBE-420E-89CE-89BA71D2CF91}
 	EndGlobalSection
 EndGlobal
