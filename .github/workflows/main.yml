@@ -1,0 +1,41 @@
+name: "CI / Debug Builds"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Release-Build-and-Deploy:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: microsoft/setup-msbuild@v1.3.1
+      - uses: nuget/setup-nuget@v1.1.1
+
+      - name: Restoring Packages
+        run: nuget restore ./Encourage.sln
+
+      - name: Building x86 Version
+        run: msbuild './EncouragePackage.x86/EncouragePackage.x86.csproj' /p:configuration='Debug' /p:platform='x86' /p:DeployExtension='False'
+
+      - name: Building x64 Version
+        run: msbuild './EncouragePackage.x64/EncouragePackage.x64.csproj' /p:configuration='Debug' /p:platform='x64' /p:DeployExtension='False'
+
+      - name: Publishing x86 Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: "./EncouragePackage.x86/bin/x86/Debug/EncouragePackage.x86.vsix"
+          name: latest-x86
+
+      - name: Publishing x64 Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: "./EncouragePackage.x64/bin/x64/Debug/EncouragePackage.x64.vsix"
+          name: latest-x64
+  
