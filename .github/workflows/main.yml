@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  Release-Build-and-Deploy:
+  Debug-Builds:
     runs-on: windows-latest
 
     steps:
