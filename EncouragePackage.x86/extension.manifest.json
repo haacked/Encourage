@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json.schemastore.org/vsix-publish",
+  "categories": [
+    "coding"
+  ],
+  "identity": {
+    "internalName": "Encourage"
+  },
+  "overview": "README.md",
+  "priceCategory": "free",
+  "publisher": "haacked",
+  "private": false,
+  "qna": true,
+  "repo": "https://github.com/haacked/Encourage",
+  "tags": [
+    "fun"
+  ]
+}

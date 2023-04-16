@@ -72,10 +72,9 @@
     <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\Resources\README.md">
-      <Link>Resources\README.md</Link>
-    </None>
+    <None Include="extension.manifest.json" />
     <None Include="Key.snk" />
+    <None Include="README.md" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
@@ -85,20 +84,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.31902.203" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5233" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\Resources\encourage-icon.png">
-      <Link>Resources\encourage-icon.png</Link>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="..\Resources\LICENSE.txt">
-      <Link>Resources\LICENSE.txt</Link>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="..\Resources\Package.ico">
-      <Link>Resources\Package.ico</Link>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -124,6 +109,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Resources\encourage-icon.png">
+      <Link>Resources\encourage-icon.png</Link>
+    </Content>
+    <Content Include="..\Resources\LICENSE.txt">
+      <Link>Resources\LICENSE.txt</Link>
+    </Content>
   </ItemGroup>
   <Import Project="..\EncourageShared\EncourageShared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
