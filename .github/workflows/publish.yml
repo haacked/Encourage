@@ -1,0 +1,37 @@
+name: "Release Builds and Publish"
+
+on:
+  push:
+    tags: releases/[1-9]+.[0-9]+.[0-9]+.[0-9]+
+
+jobs:
+  Release-Builds:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: microsoft/setup-msbuild@v1.3.1
+      - uses: nuget/setup-nuget@v1.1.1
+
+      - name: Restoring Packages
+        run: nuget restore ./Encourage.sln
+
+      - name: Building x86 Version
+        run: msbuild './EncouragePackage.x86/EncouragePackage.x86.csproj' /p:configuration='Release' /p:platform='x86' /p:DeployExtension='False'
+
+      - name: Building x64 Version
+        run: msbuild './EncouragePackage.x64/EncouragePackage.x64.csproj' /p:configuration='Release' /p:platform='x64' /p:DeployExtension='False'
+  
+      - name: Publish x86 to Marketplace
+        uses: CalvinAllen/action-vs-marketplace-publish@v1
+        with:
+          marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          publish-manifest-path: ./EncouragePackage.x86/extension.manifest.json
+          vsix-path: ./EncouragePackage.x86/bin/x86/Debug/Encourage.x86.vsix
+
+      - name: Publish x64 to Marketplace
+        uses: CalvinAllen/action-vs-marketplace-publish@v1
+        with:
+          marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          publish-manifest-path: ./EncouragePackage.x64/extension.manifest.json
+          vsix-path: ./EncouragePackage.x64/bin/x64/Debug/Encourage.x64.vsix
