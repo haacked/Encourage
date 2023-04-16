@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="f38d29e7-cd86-43d5-9c32-4be26302b55e" Version="1.2.2" Language="en-US" Publisher="Phil Haack" />
+        <Identity Id="f38d29e7-cd86-43d5-9c32-4be26302b55e" Version="1.5.0" Language="en-US" Publisher="Phil Haack" />
         <DisplayName>Encourage</DisplayName>
         <Description xml:space="preserve">Adds a bit of whimsy to your work day.</Description>
         <MoreInfo>https://github.com/haacked/encourage</MoreInfo>

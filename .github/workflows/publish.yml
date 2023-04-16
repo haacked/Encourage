@@ -1,8 +1,8 @@
 name: "Release Builds and Publish"
 
 on:
-  push:
-    tags: releases/[1-9]+.[0-9]+.[0-9]+.[0-9]+
+  release:
+    types: [created]
 
 jobs:
   Release-Builds:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Building x64 Version
         run: msbuild './EncouragePackage.x64/EncouragePackage.x64.csproj' /p:configuration='Release' /p:platform='x64' /p:DeployExtension='False'
-  
+
       - name: Publish x86 to Marketplace
         uses: CalvinAllen/action-vs-marketplace-publish@v1
         with:

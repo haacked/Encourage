@@ -11,7 +11,7 @@ namespace Haack.Encourage.x86
         public const string Name = "Encourage";
         public const string Description = @"Adds a bit of whimsy to your work day.";
         public const string Language = "en-US";
-        public const string Version = "1.2.2";
+        public const string Version = "1.5.0";
         public const string Author = "Phil Haack";
         public const string Tags = "fun";
     }
