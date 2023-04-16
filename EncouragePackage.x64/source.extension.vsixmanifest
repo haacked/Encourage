@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="4A15F36D-0769-4479-AEC4-56BF2FF8EF86" Version="1.5.0" Language="en-US" Publisher="Phil Haack" />
-        <DisplayName>Encourage</DisplayName>
+        <Identity Id="66C43F9C-C61A-4F7C-A91E-0419ABAA611B" Version="1.5.0" Language="en-US" Publisher="Haacked" />
+        <DisplayName>Encourage-22</DisplayName>
         <Description xml:space="preserve">Adds a bit of whimsy to your work day.</Description>
         <MoreInfo>https://github.com/haacked/encourage</MoreInfo>
         <License>Resources\LICENSE.txt</License>
