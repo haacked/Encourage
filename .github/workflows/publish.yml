@@ -22,16 +22,28 @@ jobs:
       - name: Building x64 Version
         run: msbuild './EncouragePackage.x64/EncouragePackage.x64.csproj' /p:configuration='Release' /p:platform='x64' /p:DeployExtension='False'
 
-      - name: Publish x86 to Marketplace
-        uses: CalvinAllen/action-vs-marketplace-publish@v1
+      - name: Publishing x86 Artifact
+        uses: actions/upload-artifact@v3
         with:
-          marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-          publish-manifest-path: ./EncouragePackage.x86/extension.manifest.json
-          vsix-path: ./EncouragePackage.x86/bin/x86/Debug/Encourage.x86.vsix
+          path: "./EncouragePackage.x86/bin/x86/Debug/Encourage.x86.vsix"
+          name: latest-x86
 
-      - name: Publish x64 to Marketplace
-        uses: CalvinAllen/action-vs-marketplace-publish@v1
+      - name: Publishing x64 Artifact
+        uses: actions/upload-artifact@v3
         with:
-          marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-          publish-manifest-path: ./EncouragePackage.x64/extension.manifest.json
-          vsix-path: ./EncouragePackage.x64/bin/x64/Debug/Encourage.x64.vsix
+          path: "./EncouragePackage.x64/bin/x64/Debug/Encourage.x64.vsix"
+          name: latest-x64
+
+      # - name: Publish x86 to Marketplace
+      #   uses: CalvinAllen/action-vs-marketplace-publish@v1
+      #   with:
+      #     marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+      #     publish-manifest-path: ./EncouragePackage.x86/extension.manifest.json
+      #     vsix-path: ./EncouragePackage.x86/bin/x86/Debug/Encourage.x86.vsix
+
+      # - name: Publish x64 to Marketplace
+      #   uses: CalvinAllen/action-vs-marketplace-publish@v1
+      #   with:
+      #     marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+      #     publish-manifest-path: ./EncouragePackage.x64/extension.manifest.json
+      #     vsix-path: ./EncouragePackage.x64/bin/x64/Debug/Encourage.x64.vsix
