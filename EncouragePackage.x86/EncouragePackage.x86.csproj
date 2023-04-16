@@ -125,12 +125,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\Resources\encourage-icon.png">
+    <Content Include="..\Resources\encourage-icon.png">
       <Link>Resources\encourage-icon.png</Link>
-    </Resource>
-    <Resource Include="..\Resources\LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\Resources\LICENSE.txt">
       <Link>Resources\LICENSE.txt</Link>
-    </Resource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <Import Project="..\EncourageShared\EncourageShared.projitems" Label="Shared" />
   <PropertyGroup>
