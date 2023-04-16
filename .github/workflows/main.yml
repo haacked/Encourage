@@ -30,12 +30,12 @@ jobs:
       - name: Publishing x86 Artifact
         uses: actions/upload-artifact@v3
         with:
-          path: "./EncouragePackage.x86/bin/x86/Debug/EncouragePackage.x86.vsix"
+          path: "./EncouragePackage.x86/bin/x86/Debug/Encourage.x86.vsix"
           name: latest-x86
 
       - name: Publishing x64 Artifact
         uses: actions/upload-artifact@v3
         with:
-          path: "./EncouragePackage.x64/bin/x64/Debug/EncouragePackage.x64.vsix"
+          path: "./EncouragePackage.x64/bin/x64/Debug/Encourage.x64.vsix"
           name: latest-x64
   
