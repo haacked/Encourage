@@ -34,16 +34,16 @@ jobs:
           path: "./EncouragePackage.x64/bin/x64/Release/Encourage.x64.vsix"
           name: latest-x64
 
-      # - name: Publish x86 to Marketplace
-      #   uses: CalvinAllen/action-vs-marketplace-publish@v1
-      #   with:
-      #     marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-      #     publish-manifest-path: ./EncouragePackage.x86/extension.manifest.json
-      #     vsix-path: ./EncouragePackage.x86/bin/x86/Release/Encourage.x86.vsix
+      - name: Publish x86 to Marketplace
+        uses: CalvinAllen/action-vs-marketplace-publish@v1
+        with:
+          marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          publish-manifest-path: ./EncouragePackage.x86/extension.manifest.json
+          vsix-path: ./EncouragePackage.x86/bin/x86/Release/Encourage.x86.vsix
 
-      # - name: Publish x64 to Marketplace
-      #   uses: CalvinAllen/action-vs-marketplace-publish@v1
-      #   with:
-      #     marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-      #     publish-manifest-path: ./EncouragePackage.x64/extension.manifest.json
-      #     vsix-path: ./EncouragePackage.x64/bin/x64/Release/Encourage.x64.vsix
+      - name: Publish x64 to Marketplace
+        uses: CalvinAllen/action-vs-marketplace-publish@v1
+        with:
+          marketplace-pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          publish-manifest-path: ./EncouragePackage.x64/extension.manifest.json
+          vsix-path: ./EncouragePackage.x64/bin/x64/Release/Encourage.x64.vsix
